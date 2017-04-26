@@ -4,18 +4,9 @@
     nfs_server: 192.168.1.250
     nfs_share: /sources
     install_path: /sources/NetBackup_8.0_CLIENTS2/
-    licence: 'KJXZ-WOEF-DINT-UX3P-36CP-CIR4-KSOY-KY7F-FYUP-RC'
+    licence: 'xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xx'
     masterserver: 'netbackup.buirey.local'
     clientname: 'mycms.buirey.local'
-  tasks:
-    - name: Mount NFS Share For Netbackup Install
-      mount:
-        name: '/sources'
-        src: "{{nfs_server}}:{{nfs_share}}"
-        fstype: nfs
-        opts: ro
-        state: mounted
-      register: mount_nfs
 
 # Do you wish to continue? [y,n] (y)
 # Do you want to install the NetBackup client software for this client? [y,n] (y)
@@ -39,11 +30,3 @@
       register: install_nbu
       failed_when: install_nbu.rc!=0
       when: (ansible_system=="Linux")
-
-    - name: Mount NFS Share For Netbackup Install
-      mount:
-        name: "/sources"
-        src: "{{nfs_server}}:{{nfs_share}}"
-        fstype: nfs
-        opts: ro
-        state: absent
