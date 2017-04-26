@@ -5,7 +5,7 @@
     nfs_server: 192.168.69.199
     nfs_share: /sources
     install_path: /sources/NetBackup_8.0_LinuxR_x86_64/
-    licence: 'KJXZ-WOEF-DINT-UX3P-36CP-CIR4-KSOY-KY7F-FYUP-RC'
+    licence: 'xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xx'
     opscenter: 'opscenter.appliance.lab'
     nburole: 'master'
     launcher:
