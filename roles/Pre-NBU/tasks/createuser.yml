@@ -1,0 +1,33 @@
+# NetBackup 8.0 Installation
+# ==========================
+# Author F. Buirey
+# Date: 03/21/2017
+# Version: 1.0
+# Purposes: Create User for Netbackup Setup
+#
+---
+- name: Create nbwebgrp group
+  group:
+    name: nbwebgrp
+    state: present
+
+- name: Create nbwebsvc user
+  user:
+    name: nbwebsvc
+    group: nbwebgrp
+    state: present
+    createhome: yes
+
+- name: Create admin group
+  group: 
+    name: admin
+    state: present
+
+- name: Create admin user
+  user:
+    name: admin
+    group: admin
+    state: present
+    createhome: yes
+    generate_ssh_key: yes
+

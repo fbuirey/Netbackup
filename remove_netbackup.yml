@@ -1,0 +1,41 @@
+---
+- hosts: NBULinMaster
+  vars:
+      nfs_server: 192.168.1.250
+      nfs_share: /sources
+  tasks:
+  - name: Stop Netbackup Process
+    service: 
+      name: netbackup
+      state: stopped
+
+  - name: Stop vxpbx_exchanged Process
+    service: 
+      name: vxpbx_exchanged
+      state: stopped
+
+  - name: Remove VRTS Packages
+    yum: 
+      name: VRTS* 
+      state: removed
+
+  - name: REMOVE SYMANTEC PACKAGES
+    yum: 
+      name: SYMC*
+      state: removed
+
+  - name: 3. remove nbwebsvc user
+    user:
+      name: nbwebsvc
+      state: absent
+      remove: yes
+
+  - name: 4. Remove group
+    group: 
+      name: nbwebgrp
+      state: absent
+
+  - name: 5. clear /usr/openv
+    file: 
+      path: /usr/openv
+      state: absent

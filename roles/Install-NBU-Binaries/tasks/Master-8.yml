@@ -1,0 +1,42 @@
+# NetBackup 8.0 Installation
+# ==========================
+# Author F. Buirey
+# Date: 03/21/2017
+# Version: 1.0
+# Purposes: This Playbook installs Netbackup 8.0 on Centos or Redhat Platform
+# Target: Server in nbuservers list in ansible host files
+#
+#  QUESTIONS
+#  Do you wish to continue? [y,n] (y) y
+# Is this host the master server? [y,n] (y) y
+# Do you want to install NetBackup and Media Manager files? [y,n] (y) y
+# Is it OK to install in /usr/openv? [y,n] (y) y
+# Enter license key: KJXZ-WOEF-DINT-UX3P-36CP-CIR4-KSOY-KY7F-FYUP-RC:
+# Do you want to add additional license keys now? [y,n] (y) n
+# NetBackup server name of this machine? [y,n] (y) n
+# hostname
+# Do you want to add any media servers now? [y,n] (n) n
+# Do you want to start the job-related NetBackup daemons so backups and restores can be initiated? [y,n] (y) y
+# Enter the OpsCenter server (default: NONE):
+#
+#
+---
+- name: Install netbackup
+  shell: |
+    ./install <<EOF
+    y
+    y
+    y
+    y
+    {{licence}}
+    n
+    n
+    {{ansible_fqdn}}
+    n
+    y
+    {{opscenter}}
+    EOF
+  args:
+    chdir: /sources/NetBackup_8.0_LinuxR_x86_64/
+  register: install_nbu
+  failed_when: install_nbu.rc!=0

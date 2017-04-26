@@ -1,0 +1,41 @@
+---
+- hosts: NBULinMaster
+  serial: 1
+  vars:
+    nfs_server: 192.168.69.199
+    nfs_share: /sources
+    install_path: /sources/NetBackup_8.0_LinuxR_x86_64/
+    licence: 'KJXZ-WOEF-DINT-UX3P-36CP-CIR4-KSOY-KY7F-FYUP-RC'
+    opscenter: 'opscenter.appliance.lab'
+    nburole: 'master'
+    launcher:
+      Netbackup:
+        desc: 'NetBackup Administration Console'
+        exec: '/usr/openv/java/jnbSA'
+        icon: 'Netbackup.png' 
+        cat: 'System'
+        term: 'false'
+      OpsCenter:
+        desc: 'OpsCenter Web Console'
+        exec: '/usr/openv/java/jbpSA'
+        icon: 'Opscenter.png' 
+        cat: 'System'
+        term: 'false'
+      StopNbu:
+        desc: 'Stop Netbackup Services'
+        exec: '/etc/init.d/netbackup stop'
+        icon: 'Stopnbu.png'
+        cat: 'System'
+        term: 'true'
+      StartNbu:
+        desc: 'Start Netbackup Services'
+        exec: '/etc/init.d/netbackup start'
+        icon: 'Startnbu.png'
+        cat: 'System'
+        term: 'true'
+
+  roles: 
+  - Pre-NBU
+  - Install-NBU-Master-8
+  - Post-NBU
+  - Desktop

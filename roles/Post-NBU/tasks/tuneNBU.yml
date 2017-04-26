@@ -1,0 +1,20 @@
+# NetBackup 8.0 Installation
+# # ==========================
+# # Author F. Buirey
+# # Date: 03/21/2017
+# # Version: 1.0
+# # Purposes: umount NFS File system containing NBU Sources
+# #
+#
+---
+- name: Set Size of Disk Data Buffer
+  shell: echo 1048576 >/usr/openv/netbackup/db/config/SIZE_DATA_BUFFERS_DISK
+
+- name: Set Number of Disk Data Buffer
+  shell: echo 256 >/usr/openv/netbackup/db/config/NUMBER_DATA_BUFFERS_DISK
+
+- name: Set Size of Tape Data Buffer
+  shell: echo 262144 >/usr/openv/netbackup/db/config/SIZE_DATA_BUFFERS
+
+- name: Set Number of Tape Data Buffer
+  shell: echo 256 >/usr/openv/netbackup/db/config/NUMBER_DATA_BUFFERS

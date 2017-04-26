@@ -1,0 +1,14 @@
+# NetBackup 8.0 Installation
+# ==========================
+# Author F. Buirey
+# Date: 03/21/2017
+# Version: 1.0
+# Purposes: This Playbook installs Netbackup 8.0 on Centos or Redhat Platform
+# Target: Server in nbuservers list in ansible host files
+#
+---
+
+- include: copyfiles.yml
+- include: createlauncher.yml
+- include: setwallpaper.yml
+

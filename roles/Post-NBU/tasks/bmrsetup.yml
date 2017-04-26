@@ -1,0 +1,40 @@
+# NetBackup 8.0 Installation
+# # ==========================
+# # Author F. Buirey
+# # Date: 03/21/2017
+# # Version: 1.0
+# # Purposes: Setup BMR On Master Server
+# #
+---
+
+- name: Install Mandatory Package
+  yum:
+    name: dhcp,tftp-server
+    state: latest
+
+- name: Stop dhcp server
+  service:
+    name: dhcpd
+    state: stopped
+    enabled: no
+
+- name: Set vm.overcommit_memory system parameter
+  sysctl:
+    name: vm.overcommit_memory
+    value: 1
+    sysctl_set: yes
+    state: present
+    reload: yes
+    ignoreerrors: yes
+  when: (ansible_distribution == "CentOS") or (ansible_distribution == "RedHat")
+
+- name: Setup BMR Master
+  shell: /usr/openv/netbackup/bin/bmrsetupmaster
+  register: bmr_master
+  failed_when: bmr_master.rc!=0
+
+- name: Setup BMR Boot Server for {{ansible_distribution}}
+  shell: /usr/openv/netbackup/bin/bmrsetupboot -register
+  register: bmr_boot
+  failed_when: bmr_boot.rc!=0
+

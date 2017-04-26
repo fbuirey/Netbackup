@@ -1,0 +1,18 @@
+# NetBackup 8.0 Installation
+# # ==========================
+# # Author F. Buirey
+# # Date: 03/21/2017
+# # Version: 1.0
+# # Purposes: umount NFS File system containing NBU Sources
+# #
+#
+---
+- name: Mounting NFS Share
+  mount:
+    name: '/sources'
+    src: "{{nfs_server}}:{{nfs_share}}"
+    fstype: nfs
+    opts: ro
+    state: absent
+  register: mount_nfs
+

@@ -1,0 +1,19 @@
+# NetBackup 8.0 Installation
+# # ==========================
+# # Author F. Buirey
+# # Date: 03/21/2017
+# # Version: 1.0
+# # Purposes: Mount NFS File system containing NBU Sources
+# #
+#
+---
+
+- name: Settings Gnome WallPaper
+  gconftool2:
+    key: "/desktop/gnome/background/picture_filename"
+    value_type: "string" 
+    value: "/usr/openv/custom/wallpaper/StarWar1.jpg"
+    state: present
+
+
+

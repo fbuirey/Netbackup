@@ -1,0 +1,26 @@
+# NetBackup 8.0 Installation
+# # ==========================
+# # Author F. Buirey
+# # Date: 03/21/2017
+# # Version: 1.0
+# # Purposes: Create Launcher for any user
+# # Based on dictionarry with the following structure:
+# # AppliName:
+# #   desc: description of the launcher
+# #   exec: script to execute
+# #   icon: icon to display
+# #
+#
+---
+
+- name: Creating icons
+  template:
+    src: applis.desktop
+    dest: "/usr/share/applications/{{item.key}}.desktop"
+    owner: root
+    group: root
+  with_dict: "{{launcher}}"
+
+- name: Restart Desktop
+  command: /usr/bin/xdg-desktop-menu forceupdate
+    

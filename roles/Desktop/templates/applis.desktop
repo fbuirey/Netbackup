@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name={{item.key}}
+Comment={{item.value.desc}}
+Exec={{item.value.exec}}
+Icon=/usr/openv/custom/icons/{{item.value.icon}}
+Categories={{item.value.cat}}
+Terminal={{item.value.term}}

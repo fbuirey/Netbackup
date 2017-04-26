@@ -1,0 +1,7 @@
+---
+nfs_server: 192.168.1.250
+nfs_share: /sources
+install_path: /sources/NetBackup_8.0_LinuxR_x86_64/
+licence: 'KJXZ-WOEF-DINT-UX3P-36CP-CIR4-KSOY-KY7F-FYUP-RC'
+masterserver: 'netbackup.buirey.local'
+opscenter: 'opscenter.buirey.local'

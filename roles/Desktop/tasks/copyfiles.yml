@@ -1,0 +1,31 @@
+# NetBackup 8.0 Installation
+# # ==========================
+# # Author F. Buirey
+# # Date: 03/21/2017
+# # Version: 1.0
+# # Purposes: Create Custom Desktop Environment for Gnome 2
+# #
+#
+---
+
+- name: Creating Destop Environment
+  file:
+    path: "/usr/openv/custom/{{item}}"
+    state: directory
+    mode: 0755
+  with_items:
+    - 'wallpaper'
+    - 'icons'
+
+- name: Copying WallPaper
+  copy:
+    src: "{{item.file}}"
+    dest: "/usr/openv/custom/{{item.folder}}"
+    mode: 0644
+  with_items:
+    - { folder: 'wallpaper', file: StarWar1.jpg }
+    - { folder: 'icons', file: Netbackup.png }
+    - { folder: 'icons', file: Opscenter.png }
+    - { folder: 'icons', file: Startnbu.png }
+    - { folder: 'icons', file: Stopnbu.png }
+
